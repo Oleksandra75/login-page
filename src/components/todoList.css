@@ -1,0 +1,26 @@
+.container{
+   margin: 1rem;
+   display: flex;
+   flex-direction: column;
+   border-radius: 10px;
+   border: 2px solid #4e65f7;
+   padding: 1rem 2rem 1rem 2rem;
+   box-shadow: rgba(40, 132, 218, 0.927) 0px 5px 10px;
+}
+.header{
+   font-size: 2rem;
+   text-align: center;
+   margin-top: 3rem;
+}
+.title {
+   color: #000;
+   margin-bottom: 1rem;
+   text-align: left;
+}
+.text {
+   color: #000;
+   font-size: 0.75rem;
+   text-align: left;
+   margin-bottom: 1rem;
+   max-width: 700px;
+}

@@ -35,19 +35,18 @@ const Registration = () => {
       setValid(isvalid)
 
       if(Object.keys(validationErrors).length === 0){
-         axios.post(' http://localhost:8000/users', formData)
+         axios.post('https://jsonplaceholder.typicode.com/users', formData)
          .then(res => {
-            //alert("Registered Successfully")
+            alert("Registered Successfully")
             navigate('/home')
          })
          .catch(err => console.log(err))
       }
-      
    };
 
   return (
      <section className="card">
-        <h1 className="title">Sign In</h1>
+        <h1 className="title_r">Sign In</h1>
         <form onSubmit={handleSubmit}>
            <div className="inputs_container">
               <input type="email" placeholder="Username" name="email" onChange={(e) => setFormData({...formData, email:e.target.value})} />
@@ -56,7 +55,7 @@ const Registration = () => {
               }
               <input type="password" placeholder="Password" name="password" onChange={(e) => setFormData({ ...formData, password: e.target.value })} />
               {
-                 valid ? <></> :<span className="error_msg "> {err.password}; </span>
+                 valid ? <></> :<span className="error_msg "> {err.password} </span>
               }
            </div>
            <button className="login_button">Log In</button>
