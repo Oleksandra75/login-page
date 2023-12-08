@@ -1,0 +1,39 @@
+{
+  "users": [
+    {
+      "email": "sdfgh@gmail.com",
+      "password": "12458/96",
+      "id": 1
+    },
+    {
+      "email": "dfgh@gmail.com",
+      "password": "dfghjk",
+      "id": 2
+    },
+    {
+      "email": "dfgh45@gmail.com",
+      "password": "dfghjk4",
+      "id": 3
+    },
+    {
+      "email": "fgbhnm5@gmail.com",
+      "password": "dfghjk4",
+      "id": 4
+    },
+    {
+      "email": "dfgh@gmail.com",
+      "password": "dcfvgbh",
+      "id": 5
+    },
+    {
+      "email": "sdf7894gh@gmail.com",
+      "password": "asdfghnj4567",
+      "id": 6
+    },
+    {
+      "email": "dfg78844h@gmail.com",
+      "password": "sdfghjkl4567",
+      "id": 7
+    }
+  ]
+}
