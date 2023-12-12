@@ -15,15 +15,40 @@
 .post-link{
    text-decoration: none;
 }
-.title {
-   color: #000;
-   margin-bottom: 1rem;
+table {
+   width: 100%;
+   border-collapse: collapse;
+   margin: 1rem;
+}
+
+th,
+td {
+   border: 2px solid #4e65f7;
+   padding: 1rem;
    text-align: left;
 }
-.text {
-   color: #000;
-   font-size: 0.75rem;
-   text-align: left;
-   margin-bottom: 1rem;
-   max-width: 700px;
+
+th {
+   background-color: #4e65f7;
+}
+.view-mode-toggle {
+   position: fixed;
+   top: 60px;
+   right: 60px;
+}
+
+.view-mode-toggle button {
+   padding: 10px;
+   font-size: 16px;
+   cursor: pointer;
+   background-color: #4e65f7;
+   color: #fff;
+   border: none;
+   border-radius: 4px;
+   display: flex;
+   align-items: center;
+}
+
+.view-mode-toggle button:hover {
+   background-color: #0056b3;
 }

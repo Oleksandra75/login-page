@@ -6,7 +6,7 @@ import './post.css'
 const Post = () => {
   const [todos, setTodos] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize] = useState(7);
+  const [pageSize] = useState(10);
   const [totalPages, setTotalPages] = useState(null);
 
   const fetchData = async () => {

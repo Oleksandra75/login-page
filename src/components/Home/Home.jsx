@@ -10,7 +10,7 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <div className='page_container'>
       <h1 className="title_in">You are now logged in!</h1>
       <button className='back_button' onClick={goToPosts}>Go to Posts</button>
     </div>
