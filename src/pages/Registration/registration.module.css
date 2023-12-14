@@ -7,7 +7,7 @@
    margin: 1rem;
    box-shadow: rgba(0, 0, 0, 0.70) 0px 10px 40px;
 }
-.title_r {
+.title {
    color: #fff;
    text-align: center;
    margin-bottom: 1rem;
@@ -28,6 +28,7 @@
    outline: 0;
    border: 0;
    transition: 0.3s;
+   background-color: #fff;
    box-shadow: rgba(255, 255, 255, 0.927) 0px 5px 10px;
 }
 .inputs_container input:hover{

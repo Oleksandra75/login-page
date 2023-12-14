@@ -1,19 +1,27 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './components/Home/Home';
-import Registration from './components/Registration/Registration';
-import Posts from './components/Posts/Posts';
-import PostDetails from './components/Posts/PostDetails';
+import { Outlet } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import { PostProvider } from './source/PostContext';
+import axios from 'axios';
+import { SearchProvider } from './source/SearchContext';
+
+const axiosInstance = axios.create({
+  baseURL: process.env.REACT_APP_API_URL,
+});
+
+const searchAxiosInstance = axios.create({
+  baseURL: process.env.REACT_APP_API_URL,
+});
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Registration />} />
-        <Route path='/home' element={<Home />} />
-        <Route path='/posts' element={<Posts />} />
-        <Route path='/posts/:postId' element={<PostDetails />} />
-      </Routes>
-    </BrowserRouter>
+    <div className='app__container'>
+      <SearchProvider searchAxiosInstance={searchAxiosInstance}>
+        <Navbar />
+      </SearchProvider>
+      <PostProvider axiosInstance={axiosInstance}>
+        <Outlet />
+      </PostProvider>
+    </div>
   );
 }
 

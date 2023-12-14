@@ -1,6 +1,13 @@
+.page-container{
+   min-height: 100vh;
+   display: flex;
+   flex: 1 1 auto;
+   align-items: center;
+}
 .title {
    color: #000;
    margin-bottom: 1rem;
+   font-size: 2rem;
    text-align: left;
 }
 
@@ -8,6 +15,7 @@
    color: #000;
    font-size: 0.75rem;
    text-align: left;
+   line-height: 125%;
    margin-bottom: 1rem;
    max-width: 700px;
 }
