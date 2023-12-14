@@ -11,12 +11,9 @@ export const SearchProvider = ({ children, searchAxiosInstance }) => {
 
    useEffect(() => {
       const fetchPosts = async () => {
-         try {
-            const response = await searchAxiosInstance.get(`/posts`);
-            setPosts(response.data);
-         } catch (error) {
-            console.error('Error fetching posts:', error);
-         }
+         await searchAxiosInstance.get(`/posts`)
+            .then(res => setPosts(res.data))
+            .catch(error => console.error('Error fetching posts:', error))
       };
 
       fetchPosts();

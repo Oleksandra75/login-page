@@ -12,17 +12,16 @@ export const PostProvider = ({ children, axiosInstance }) => {
 
    useEffect(() => {
       const fetchData = async () => {
-         try {
-            const response = await axiosInstance.get(`/posts?_page=${currentPage}&_limit=${pageSize}`);
-            const totalCount = response.headers['x-total-count'];
+         await axiosInstance.get(`/posts?_page=${currentPage}&_limit=${pageSize}`)
+         .then( res => {
+            const totalCount = res.headers['x-total-count'];
             setTotalPages(Math.ceil(totalCount / pageSize));
-            setTodos(response.data);
-         } catch (error) {
-            console.error('Помилка завантаження постів:', error);
-         }
+            setTodos(res.data);
+         })
+         .catch(error => console.error('Помилка завантаження постів:', error))
       };
       fetchData();
-   }, [axiosInstance, currentPage, pageSize]);
+   }, [axiosInstance, currentPage, pageSize])
 
    const handlePageChange = (newPage) => {
       setCurrentPage(newPage);
