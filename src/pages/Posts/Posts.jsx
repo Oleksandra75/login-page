@@ -5,11 +5,11 @@ import TodoList from '../TodoList/TodoList';
 import './post.css';
 
 const Post = () => {
-  const { todos, currentPage, totalPages, handlePageChange } = usePostContext();
+  const { posts, currentPage, totalPages, handlePageChange } = usePostContext();
 
   return (
     <div>
-      {todos && <TodoList todos={todos} />}
+      {posts && <TodoList posts={posts} />}
       <div className='wrapper'>
         <button
           className='btn'

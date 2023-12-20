@@ -6,7 +6,7 @@ import TableView from './TableView/TableView';
 import ListView from './ListView/ListView';
 
 const TodoList = () => {
-   const { todos, viewMode, toggleViewMode } = usePostContext();
+   const { posts, viewMode, toggleViewMode } = usePostContext();
 
    return (
       <section className={classes['posts__container']}>
@@ -15,7 +15,7 @@ const TodoList = () => {
                {viewMode === 'list' ? <FaTable size={20} /> : <FaList size={20} />}
             </button>
          </div>
-         {viewMode === 'list' ? <ListView todos={todos} /> : <TableView todos={todos} />}
+         {viewMode === 'list' ? <ListView posts={posts} /> : <TableView posts={posts} />}
       </section>
    );
 };

@@ -1,18 +1,26 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+
 import classes from './postDetails.module.css';
-import { useSearchContext } from '../../../source/SearchContext';
+import { getPost } from '../../../util/api';
 
 const PostDetails = () => {
-   const { postId } = useParams();
-   const { posts } = useSearchContext();
+   const [post, setPost] = useState();
+   const { id } = useParams(); 
+   const baseURL = process.env.REACT_APP_API_URL;
 
-   // Додайте перевірку, чи є пости доступні
-   if (!posts || posts.length === 0) {
-      return <p>Loading...</p>; // або будь-який інший елемент ви чекаєте
-   }
+   useEffect(() => {
+      async function loadPost() {
+         try {
+            const post = await getPost(id,baseURL);
+            setPost(post);
+         } catch (err) {
+            console.error('Error fetching posts:', err.message);
+         }
+      }
 
-   const post = posts.find((post) => post.id === parseInt(postId));
+      loadPost();
+   }, [id]);
 
    return (
       <div className={classes['page-container']}>
@@ -30,4 +38,3 @@ const PostDetails = () => {
 };
 
 export default PostDetails;
-

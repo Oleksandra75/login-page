@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import classes from '../todoList.module.css';
 
-const TableView = ({ todos }) => {
+const TableView = ({ posts }) => {
 
    return (
       <>
@@ -16,12 +16,12 @@ const TableView = ({ todos }) => {
                </tr>
             </thead>
             <tbody>
-               {todos.map((todo) => (
-                  <tr key={todo.id}>
-                     <td>{todo.id}</td>
+               {posts.map((post) => (
+                  <tr key={post.id}>
+                     <td>{post.id}</td>
                      <td>
-                        <Link to={`/posts/${todo.id}`} className={classes.link}>
-                           {todo.title}
+                        <Link to={`/posts/${post.id}`} className={classes.link}>
+                           {post.title}
                         </Link>
                      </td>
                   </tr>

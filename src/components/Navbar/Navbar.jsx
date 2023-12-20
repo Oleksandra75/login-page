@@ -2,19 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { RiSearch2Line } from 'react-icons/ri';
 import styles from './navbar.module.css';
-import { useSearchContext } from '../../source/SearchContext';
+import useNavbarLogic from './navbarLogic';
 
 const Navbar = () => {
   const {
     searchTerm,
     setSearchTerm,
+    posts,
     searchResults,
     isActive,
     setIsActive,
     showPopup,
     setShowPopup,
     handlePostClick,
-  } = useSearchContext();
+  } = useNavbarLogic();
 
   return (
     <header className={styles.header}>

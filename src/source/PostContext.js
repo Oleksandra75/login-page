@@ -1,9 +1,9 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-
+import { getData } from '../util/api';
 const PostContext = createContext();
 
 export const PostProvider = ({ children }) => {
-   const [todos, setTodos] = useState(null);
+   const [posts, setPosts] = useState(null);
    const [currentPage, setCurrentPage] = useState(1);
    const [pageSize] = useState(10);
    const [totalPages, setTotalPages] = useState(null);
@@ -13,22 +13,17 @@ export const PostProvider = ({ children }) => {
    const baseURL = process.env.REACT_APP_API_URL;
 
    useEffect(() => {
-      const fetchData = async () => {
+      const fetchDataAndUpdateState = async () => {
          try {
-            const response = await fetch(`${baseURL}/posts?_page=${currentPage}&_limit=${pageSize}`);
-            if (!response.ok) {
-               throw new Error(`Failed to fetch posts: ${response.status} ${response.statusText}`);
-            }
-            const totalCount = response.headers.get('x-total-count');
-            setTotalPages(Math.ceil(totalCount / pageSize));
-            const data = await response.json();
-            setTodos(data);
+            const { data, totalPages } = await getData(currentPage, pageSize, baseURL);
+            setTotalPages(totalPages);
+            setPosts(data);
          } catch (error) {
             console.error('Error fetching posts:', error.message);
          }
       };
 
-      fetchData();
+      fetchDataAndUpdateState();
    }, [baseURL, currentPage, pageSize]);
 
    const handlePageChange = (newPage) => {
@@ -44,7 +39,7 @@ export const PostProvider = ({ children }) => {
    };
 
    return (
-      <PostContext.Provider value={{ todos, currentPage, totalPages, handlePageChange, viewMode, toggleViewMode }}>
+      <PostContext.Provider value={{ posts, currentPage, totalPages, handlePageChange, viewMode, toggleViewMode }}>
          {children}
       </PostContext.Provider>
    );
