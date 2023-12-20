@@ -1,13 +1,18 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import classes from './postDetails.module.css';
-import { usePostContext } from '../../../source/PostContext';
-
+import { useSearchContext } from '../../../source/SearchContext';
 
 const PostDetails = () => {
    const { postId } = useParams();
-   const { todos } = usePostContext();
-   const post = todos.find((post) => post.id === parseInt(postId));
+   const { posts } = useSearchContext();
+
+   // Додайте перевірку, чи є пости доступні
+   if (!posts || posts.length === 0) {
+      return <p>Loading...</p>; // або будь-який інший елемент ви чекаєте
+   }
+
+   const post = posts.find((post) => post.id === parseInt(postId));
 
    return (
       <div className={classes['page-container']}>
@@ -25,3 +30,4 @@ const PostDetails = () => {
 };
 
 export default PostDetails;
+

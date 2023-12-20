@@ -17,14 +17,14 @@ export const PostProvider = ({ children }) => {
          try {
             const response = await fetch(`${baseURL}/posts?_page=${currentPage}&_limit=${pageSize}`);
             if (!response.ok) {
-               throw new Error(`Не вдалося отримати дані: ${response.status} ${response.statusText}`);
+               throw new Error(`Failed to fetch posts: ${response.status} ${response.statusText}`);
             }
             const totalCount = response.headers.get('x-total-count');
             setTotalPages(Math.ceil(totalCount / pageSize));
             const data = await response.json();
             setTodos(data);
          } catch (error) {
-            console.error('Помилка завантаження постів:', error.message);
+            console.error('Error fetching posts:', error.message);
          }
       };
 

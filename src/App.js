@@ -6,11 +6,11 @@ import { SearchProvider } from './source/SearchContext';
 function App() {
   return (
     <div className='app__container'>
-      <SearchProvider>
-        <Navbar />
-      </SearchProvider>
       <PostProvider>
-        <Outlet />
+        <SearchProvider>
+          <Navbar />
+          <Outlet />
+        </SearchProvider>
       </PostProvider>
     </div>
   );
