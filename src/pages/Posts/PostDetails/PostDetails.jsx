@@ -1,8 +1,8 @@
-// PostDetails.js
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { usePostContext } from '../../source/PostContext';
 import classes from './postDetails.module.css';
+import { usePostContext } from '../../../source/PostContext';
+
 
 const PostDetails = () => {
    const { postId } = useParams();

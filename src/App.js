@@ -1,24 +1,15 @@
 import { Outlet } from 'react-router-dom';
-import Navbar from './components/Navbar';
+import Navbar from './components/Navbar/Navbar';
 import { PostProvider } from './source/PostContext';
-import axios from 'axios';
 import { SearchProvider } from './source/SearchContext';
-
-const axiosInstance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
-});
-
-const searchAxiosInstance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
-});
 
 function App() {
   return (
     <div className='app__container'>
-      <SearchProvider searchAxiosInstance={searchAxiosInstance}>
+      <SearchProvider>
         <Navbar />
       </SearchProvider>
-      <PostProvider axiosInstance={axiosInstance}>
+      <PostProvider>
         <Outlet />
       </PostProvider>
     </div>
@@ -26,4 +17,5 @@ function App() {
 }
 
 export default App;
+
 

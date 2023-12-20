@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import classes from './todoList.module.css';
+import classes from '../todoList.module.css';
 
 const ListView = ({ todos }) => (
    <div>

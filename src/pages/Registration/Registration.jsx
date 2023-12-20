@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom"
-import axios  from "axios"
 import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
 import classes from"./registration.module.css"
 
@@ -35,14 +34,27 @@ const Registration = () => {
       setErr(validationErrors)
       setValid(isvalid)
 
-      if(Object.keys(validationErrors).length === 0){
-         axios.post(`${baseURL}/users`, formData)
-         .then(res => {
-            alert("Registered Successfully")
-            navigate('/home')
+      if (Object.keys(validationErrors).length === 0) {
+         fetch(`${baseURL}/users`, {
+            method: 'POST',
+            headers: {
+               'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
          })
-         .catch(err => console.log(err))
+            .then(response => {
+               if (!response.ok) {
+                  throw new Error(`Failed to register: ${response.status} ${response.statusText}`);
+               }
+               return response.json();
+            })
+            .then(data => {
+               alert("Registered Successfully");
+               navigate('/home');
+            })
+            .catch(error => console.log(error));
       }
+
    };
 
   return (

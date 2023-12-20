@@ -1,7 +1,7 @@
 // TableView.js
 import React from 'react';
 import { Link } from 'react-router-dom';
-import classes from './todoList.module.css';
+import classes from '../todoList.module.css';
 
 const TableView = ({ todos }) => {
 

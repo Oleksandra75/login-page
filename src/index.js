@@ -6,7 +6,8 @@ import App from './App';
 import Home from './pages/Home/Home';
 import Registration from './pages/Registration/Registration';
 import Posts from './pages/Posts/Posts';
-import PostDetails from './pages/Posts/PostDetails';
+import PostDetails from './pages/Posts/PostDetails/PostDetails'
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -14,8 +15,8 @@ const router = createBrowserRouter([
   },
   {
     path: "/",
-    element: < App/>,
-    children:[
+    element: < App />,
+    children: [
       {
         path: "/home",
         element: < Home />,
@@ -38,4 +39,3 @@ root.render(
     <RouterProvider router={router} />
   </React.StrictMode>
 );
-

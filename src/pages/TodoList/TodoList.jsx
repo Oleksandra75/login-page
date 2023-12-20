@@ -2,8 +2,8 @@ import React from 'react';
 import classes from './todoList.module.css';
 import { FaList, FaTable } from 'react-icons/fa';
 import { usePostContext } from '../../source/PostContext'
-import TableView from './TableView';
-import ListView from './ListView';
+import TableView from './TableView/TableView';
+import ListView from './ListView/ListView';
 
 const TodoList = () => {
    const { todos, viewMode, toggleViewMode } = usePostContext();
