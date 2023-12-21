@@ -8,6 +8,7 @@ import Registration from './pages/Registration/Registration';
 import Posts from './pages/Posts/Posts';
 import PostDetails from './pages/Posts/PostDetails/PostDetails'
 import Movie from './pages/Movies/Movie';
+import MovieDetail from './pages/Movies/movieDetail/MovieDetail'
 
 const router = createBrowserRouter([
   {
@@ -31,9 +32,13 @@ const router = createBrowserRouter([
         element: < PostDetails />,
       },
       {
-        path: "/movie",
+        path: "/movies",
         element: <Movie />,
       },
+      {
+        path: "/movie/:id",
+        element: <MovieDetail />,
+      }, 
     ]
   },
 ]);
@@ -44,3 +49,6 @@ root.render(
     <RouterProvider router={router} />
   </React.StrictMode>
 );
+
+
+

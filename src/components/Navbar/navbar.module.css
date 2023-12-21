@@ -4,7 +4,7 @@
    left: 0;
    top: 0;
    z-index: 50;
-   background-color: rgba(9, 17, 178, 0.838);
+   background: linear-gradient(rgba(9, 17, 178, 0.838), rgba(171, 203, 245, 0.327))
 }
 .header__container {
    display: flex;
@@ -21,7 +21,14 @@
    color: #fff;
    font-size: 3rem;
 }
-
+.header__item{
+   font-size: 1.5rem;
+   cursor: pointer;
+   color: white;
+}
+.header__item:hover {
+   color: rgba(9, 17, 178, 0.838);
+}
 .search {
    max-width: 280px;
    width: 100%;

@@ -30,4 +30,3 @@ export async function getPost(id,baseURL) {
    }
    return response.json();
 }
-
