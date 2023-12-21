@@ -20,7 +20,7 @@ const PostDetails = () => {
       }
 
       loadPost();
-   }, [id]);
+   }, [id, baseURL]);
 
    return (
       <div className={classes['page-container']}>

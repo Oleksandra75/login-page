@@ -2,7 +2,7 @@
 import React from 'react';
 import { usePostContext } from '../../source/PostContext';
 import TodoList from '../TodoList/TodoList';
-import './post.css';
+import classes from './post.module.css';
 
 const Post = () => {
   const { posts, currentPage, totalPages, handlePageChange } = usePostContext();
@@ -10,9 +10,9 @@ const Post = () => {
   return (
     <div>
       {posts && <TodoList posts={posts} />}
-      <div className='wrapper'>
+      <div className={classes.wrapper}>
         <button
-          className='btn'
+          className={classes.btn}
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
         >
@@ -22,7 +22,7 @@ const Post = () => {
           Page {currentPage} of {totalPages}
         </span>
         <button
-          className='btn'
+          className={classes.btn}
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
         >

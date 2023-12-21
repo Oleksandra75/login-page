@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { RiSearch2Line } from 'react-icons/ri';
 import styles from './navbar.module.css';
 import useNavbarLogic from './navbarLogic';
+import clsx from 'clsx';
 
 const Navbar = () => {
   const {
@@ -24,7 +25,7 @@ const Navbar = () => {
           My<span>Posts</span>
         </Link>
         <form
-          className={`${styles.search} ${isActive ? styles.active : ''}`}
+          className={clsx(styles.search, {[styles.active]: isActive })}
           onMouseEnter={() => setIsActive(true)}
           onMouseLeave={() => setIsActive(false)}
         >
