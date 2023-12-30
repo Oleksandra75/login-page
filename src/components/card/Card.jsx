@@ -2,7 +2,7 @@ import React from "react"
 import style from "./card.module.css"
 import { Link } from "react-router-dom"
 
-const Cards = ({ movie }) => {
+const Card = ({ movie }) => {
 
    return <>
       <Link to={`/movie/${movie.id}`} style={{ textDecoration: "none", color: "white" }}>
@@ -14,11 +14,10 @@ const Cards = ({ movie }) => {
                         {movie ? movie.release_date : ""}
                         <span className={style["card__rating"]}>{movie ? movie.vote_average : ""}<i className="fas fa-star" /></span>
                      </div>
-                     <div className={style["card__description"]}>{movie ? movie.overview.slice(0, 118) + "..." : ""}</div>
                   </div>
                </div>
        </Link>
    </>
 }
 
-export default Cards
+export default Card

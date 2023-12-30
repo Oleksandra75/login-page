@@ -24,7 +24,10 @@ const Navbar = () => {
         <Link to="/home" className={styles['header__logo']}>
           My<span>Posts</span>
         </Link>
-        <Link to="/movies" className={styles['header__item']}><span>Movies</span></Link>
+        <div>
+          <Link to="/movies" className={styles['header__item']}><span>Movies</span></Link>
+          <Link to="/favorite" className={styles['header__item']}><span>Favorite Movies</span></Link>
+        </div>
         <form
           className={clsx(styles.search, {[styles.active]: isActive })}
           onMouseEnter={() => setIsActive(true)}

@@ -30,3 +30,29 @@ export async function getPost(id,baseURL) {
    }
    return response.json();
 }
+const apiKey = process.env.REACT_APP_KEY;
+
+export const fetchPopularMovies = async () => {
+   try {
+      const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`);
+      if (!response.ok) {
+         throw new Error(`Failed to fetch popular movies: ${response.status} ${response.statusText}`);
+      }
+      const data = await response.json();
+      return data.results;
+   } catch (error) {
+      throw new Error(`Error fetching popular movies: ${error.message}`);
+   }
+};
+
+export const fetchMovieDetails = async (movieId) => {
+   const response = await fetch(
+      `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`
+   );
+
+   if (!response.ok) {
+      throw new Error(`Failed to fetch movie details: ${response.status} ${response.statusText}`);
+   }
+
+   return response.json();
+};
