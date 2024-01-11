@@ -5,6 +5,8 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import styles from './navbar.module.css';
 import useNavbarLogic from './navbarLogic';
 import clsx from 'clsx';
+import { SignOutButton } from "@clerk/clerk-react"
+
 
 const Navbar = () => {
   const [navToggler, setNavToggler] = useState(false);
@@ -78,6 +80,7 @@ const Navbar = () => {
               <button type="button" className={styles['navbar-open-btn']} onClick={() => setNavToggler(!navToggler)}>
               <FaBars size={30} />
               </button>
+          <SignOutButton afterSignOutUrl="/" />
           </div>
         </div>
     </header>
