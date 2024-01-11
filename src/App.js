@@ -5,7 +5,7 @@ import { PostProvider } from './source/PostContext';
 function App() {
   return (
     <div className='app__container'>
-      <Navbar />
+      <Navbar/>
       <PostProvider>
         <Outlet />
       </PostProvider>

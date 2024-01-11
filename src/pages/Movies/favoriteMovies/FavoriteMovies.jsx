@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { fetchMovieDetails } from '../../../util/api';
-import Card  from "../../../components/card/Card";
+import Card  from "../../../components/Card/Card";
 import style from './favorite.module.css'
 
 const FavoriteMovies = () => {

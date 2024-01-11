@@ -1,10 +1,8 @@
-import React from 'react'
 import { Link } from 'react-router-dom';
 import classes from '../todoList.module.css';
 
 const ListView = ({ posts }) => (
    <div>
-      <h2 className={classes['header']} >My posts (List View)</h2>
       {posts.map((post) => (
          <div className={classes['container']} key={post.id}>
             <Link to={`/posts/${post.id}`} className={classes['post-link']}>

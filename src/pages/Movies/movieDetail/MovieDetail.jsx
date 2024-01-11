@@ -33,12 +33,12 @@ const MovieDetail = () => {
     return (
         <div className={style.movie}>
             <div className={style['movie__intro']}>
-                <img className={style['movie__backdrop']} src={`https://image.tmdb.org/t/p/original${movieDetails ? movieDetails.backdrop_path : ""}`} alt="Image" />
+                <img className={style['movie__backdrop']} src={`https://image.tmdb.org/t/p/original${movieDetails ? movieDetails.backdrop_path : ""}`} alt="Background" />
             </div>
             <div className={style['movie__detail']}>
                 <div className={style['movie__detailLeft']}>
                     <div className={style['movie__posterBox']}>
-                        <img className={style['movie__poster']} src={`https://image.tmdb.org/t/p/original${movieDetails ? movieDetails.poster_path : ""}`} alt="Image" />
+                        <img className={style['movie__poster']} src={`https://image.tmdb.org/t/p/original${movieDetails ? movieDetails.poster_path : ""}`} alt="Poster" />
                     </div>
                 </div>
                 <div className={style['movie__detailRight']}>
@@ -54,18 +54,16 @@ const MovieDetail = () => {
                         <div className={style['movie__genres']}>
                             {
                                 movieDetails && movieDetails.genres
-                                    ?
-                                    movieDetails.genres.map(genre => (
+                                    ? movieDetails.genres.map(genre => (
                                         <span key={genre.id} className={style['movie__genre']} id={genre.id}>{genre.name}</span>
                                     ))
-                                    :
-                                    ""
+                                    : ""
                             }
                         </div>
                     </div>
                     <div className={style['movie__detailRightBottom']}>
                         <div className={style['synopsisText']}>Synopsis</div>
-                        <div>{movieDetails ? movieDetails.overview : ""}</div>
+                        <div className={style['text']}>{movieDetails ? movieDetails.overview : ""}</div>
                         <button
                             className={style["favoriteButton"]}
                             onClick={toggleFavorite}
@@ -80,3 +78,4 @@ const MovieDetail = () => {
 }
 
 export default MovieDetail;
+

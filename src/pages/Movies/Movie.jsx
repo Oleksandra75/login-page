@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import style from "./movieList.module.css";
-import Card from "../../components/card/Card";
+import Card from "../../components/Card/Card";
 import { fetchPopularMovies } from "../../util/api";
 
 const Movie = () => {

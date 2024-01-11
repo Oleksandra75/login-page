@@ -1,8 +1,7 @@
-// Post.js
-import React from 'react';
 import { usePostContext } from '../../source/PostContext';
 import TodoList from '../TodoList/TodoList';
 import classes from './post.module.css';
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const Post = () => {
   const { posts, currentPage, totalPages, handlePageChange } = usePostContext();
@@ -12,21 +11,23 @@ const Post = () => {
       {posts && <TodoList posts={posts} />}
       <div className={classes.wrapper}>
         <button
-          className={classes.btn}
+          className={`${classes.btn}`}
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
         >
-          Previous Page
+          <IoIosArrowBack size={20} />
+          <span className={classes.btnText}>Previous Page</span>
         </button>
         <span>
           Page {currentPage} of {totalPages}
         </span>
         <button
-          className={classes.btn}
+          className={`${classes.btn}`}
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
         >
-          Next Page
+          <span className={classes.btnText}>Next Page</span>
+          <IoIosArrowForward size={20} />
         </button>
       </div>
     </div>
@@ -34,3 +35,4 @@ const Post = () => {
 };
 
 export default Post;
+

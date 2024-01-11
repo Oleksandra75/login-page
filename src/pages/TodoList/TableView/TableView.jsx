@@ -1,5 +1,3 @@
-// TableView.js
-import React from 'react';
 import { Link } from 'react-router-dom';
 import classes from '../todoList.module.css';
 
@@ -7,7 +5,6 @@ const TableView = ({ posts }) => {
 
    return (
       <>
-         <h2 className={classes['header']}>My posts (Table View)</h2>
          <table>
             <thead>
                <tr>

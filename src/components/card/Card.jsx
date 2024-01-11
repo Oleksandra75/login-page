@@ -7,7 +7,7 @@ const Card = ({ movie }) => {
    return <>
       <Link to={`/movie/${movie.id}`} style={{ textDecoration: "none", color: "white" }}>
          <div className={style.cards} key={movie.id}>
-                  <img className={style["cards__img"]} src={`https://image.tmdb.org/t/p/original${movie ? movie.poster_path : ""}`} />
+                  <img className={style["cards__img"]} src={`https://image.tmdb.org/t/p/original${movie ? movie.poster_path : ""}`} alt="Movie" />
                   <div className={style["cards__overlay"]}>
                      <div className={style["card__title"]}>{movie ? movie.original_title : ""}</div>
                      <div className={style["card__runtime"]}>

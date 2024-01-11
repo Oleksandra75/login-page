@@ -1,39 +1,33 @@
 .header{
    position: fixed;
-   width: 100%;
-   left: 0;
    top: 0;
-   z-index: 50;
-   background: linear-gradient(rgba(9, 17, 178, 0.838), rgba(171, 203, 245, 0.327))
-}
-.header__container {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   padding-top: 0.3125rem;
-   padding-left: 0.3125rem;
+   right: 0;
+   left: 0;
+   width: 100%;
    min-height: 5.5625rem;
+   box-sizing: border-box;
+   z-index: 50;
+   background: linear-gradient(rgba(9, 17, 178, 0.838), rgba(171, 203, 245, 0.327));
+}
+.header__content {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 1.1rem 1rem;
 }
 .header__logo{
-   font-size: 2rem;
+   font-size: 1.5rem;
 }
 .header__logo span{
    color: #fff;
-   font-size: 3rem;
-}
-.header__item{
-   font-size: 1.5rem;
-   padding: 0 1.7rem;
-   cursor: pointer;
-   color: white;
-}
-.header__item:hover {
-   color: rgba(9, 17, 178, 0.838);
+   font-size: 2rem;
 }
 .search {
-   max-width: 280px;
+   display: flex;
+   max-width: 150px;
    width: 100%;
 }
+
 .search-box {
    position: relative;
    height: 50px;
@@ -43,10 +37,12 @@
    transition: all 0.8s ease;
 }
 
- .active .search-box{
-   width: 280px;
+.active .search-box {
+   width: 150px;
+   margin-right: 2.5rem;
 }
-.input{
+
+.input {
    position: absolute;
    height: 100%;
    width: 100%;
@@ -55,12 +51,14 @@
    border: none;
    border-radius: 25px;
    padding: 0 20px 0 20px;
-   font-size: 18px;
+   font-size: 1rem;
 }
-.input:focus{
+
+.input:focus {
    color: #3b04c8;
 }
-.icon{
+
+.icon {
    display: flex;
    justify-content: center;
    align-items: center;
@@ -75,7 +73,8 @@
    font-size: 20px;
    border-radius: 25px;
 }
-.btn{
+
+.btn {
    position: absolute;
    width: 20px;
    height: 20px;
@@ -83,8 +82,8 @@
 
 .results-list {
    position: absolute;
-   top: 88%;
-   width: 15%;
+   top: 5rem;
+   width: 150px;
    background-color: white;
    display: flex;
    flex-direction: column;
@@ -93,29 +92,115 @@
    border-radius: 5px;
    max-height: 300px;
    overflow-y: auto;
+   z-index: 20;
 }
-.popup-content{
+
+.popup-content {
    padding: 0.45rem 0;
 }
-.popup-content:hover{
+
+.popup-content:hover {
    color: rgba(9, 17, 178, 0.838);
 }
+.navbarCollapse {
+   position: fixed;
+   top: 0;
+   right: 0;
+   width: 100%;
+   background-color: #303034;
+   height: 100%;
+   padding: 7rem 0 0 3rem;
+   transform: translateX(100%);
+   transition: all 300ms ease-in-out;
+   z-index: 99;
+   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
 
-@media(max-width:39.0625em) {
+.showNavbarCollapse {
+   transform: translateX(0);
+}
+.navbar-open-btn,
+.navbar-close-btn {
+   color: #fff;
+   position: absolute;
+   background: transparent;
+   right: 1rem;
+   top: 2rem;
+}
+
+.nav-item {
+   margin-bottom: 2rem;
+}
+.nav-link {
+   position: relative;
+   font-size: 1.5rem;
+   color: #fff;
+}
+.nav-link:hover {
+   color: rgba(9, 17, 178, 0.838);
+   transition: all 300ms ease-in-out;
+}
+
+@media screen and (min-width: 499.99px) {
+   .navbarCollapse {
+      width: 320px;
+   }
+}
+
+@media screen and (min-width: 961.99px) {
    .header__logo {
-      flex: 0 0 2.0625rem;
+         font-size: 2rem;
+   }
+   .header__logo span {
+      color: #fff;
+      font-size: 3rem;
+   }
+   .search {
+         max-width: 280px;
+         width: 100%;
+   }
+   .search-box {
+      height: 50px;
+      width: 50px;
+   }
+   .active .search-box {
+         width: 280px;
+   }
+   .results-list {
+         width: 15%;
+    }
+   
+   .navbarCollapse {
+      transform: translateX(0);
+      position: relative;
+      width: 100%;
+      background-color: transparent;
+      box-shadow: none;
+      padding: 0;
+      margin: 0;
    }
 
-   .header__container {
-      min-height: 4.375rem;
-
+      .input {
+         font-size: 1.2rem;
+      }
+   .navbar-close-btn,
+   .navbar-open-btn {
+      display: none;
    }
 
-   .header__body {
-      column-gap: 1.25rem;
+   .navbar-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
    }
 
-   .header__btn {
-      padding: 0.625rem 0.9375rem;
+   .nav-item {
+      margin: 0;
+      margin-left: 3.2rem;
+   }
+
+   .nav-link {
+      font-size: 1.8rem;
    }
 }

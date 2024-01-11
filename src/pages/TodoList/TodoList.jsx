@@ -1,4 +1,3 @@
-import React from 'react';
 import classes from './todoList.module.css';
 import { FaList, FaTable } from 'react-icons/fa';
 import { usePostContext } from '../../source/PostContext'
@@ -10,6 +9,7 @@ const TodoList = () => {
 
    return (
       <section className={classes['posts__container']}>
+         <h2 className={classes['header']} >My posts </h2>
          <div className={classes['view-mode-toggle']}>
             <button onClick={toggleViewMode}>
                {viewMode === 'list' ? <FaTable size={20} /> : <FaList size={20} />}
