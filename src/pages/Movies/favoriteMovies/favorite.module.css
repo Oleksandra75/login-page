@@ -1,22 +1,22 @@
-.movie__list {
-   padding: 7rem 0rem 3rem 0rem;
+.movie_list {
+	padding: 7rem 0rem 3rem 0rem;
 }
 
 .title {
-   font-size: 1.8rem;
-   font-weight: 700;
-   text-align: center;
-   padding-bottom: 10px;
+	font-size: 1.8rem;
+	font-weight: 700;
+	text-align: center;
+	padding-bottom: 10px;
 }
 
-.list__title {
-   font-size: 1.75rem;
-   margin: 0.5rem;
+.list_title {
+	font-size: 1.75rem;
+	margin: 0.5rem;
 }
 
-.list__cards {
-   display: grid;
-   place-items: center;
-   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-   gap: 1rem;
+.list_cards {
+	display: grid;
+	place-items: center;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 1rem;
 }

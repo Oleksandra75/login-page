@@ -1,49 +1,49 @@
-.wrapper{
-   display: flex;
-   align-items: center;
-   justify-content: center;
+.wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 .btn {
-   display: block;
-   font-size: 0.75rem;
-   cursor: pointer;
-   width: 150px;
-   background-color: rgba(9, 17, 178, 0.838);
-   color: white;
-   border: 2px solid transparent;
-   border-radius: 25px;
-   transition: 0.3s;
-   padding: 0.75rem 1rem;
-   margin: 0.75rem;
+	display: block;
+	font-size: 0.75rem;
+	cursor: pointer;
+	width: 150px;
+	background-color: rgba(9, 17, 178, 0.838);
+	color: white;
+	border: 2px solid transparent;
+	border-radius: 25px;
+	transition: 0.3s;
+	padding: 0.75rem 1rem;
+	margin: 0.75rem;
 }
 
 .btn:hover {
-   border: 2px solid rgba(9, 17, 178, 0.838);
-   background-color: #fff;
-   color: #000;
+	border: 2px solid rgba(9, 17, 178, 0.838);
+	background-color: #fff;
+	color: #000;
 }
 .btn:disabled {
-   opacity: 0.5;
-   cursor: not-allowed;
+	opacity: 0.5;
+	cursor: not-allowed;
 }
-.btn{
-   display: flex;
-   align-items: center;
-   text-align: center;
+.btn {
+	display: flex;
+	align-items: center;
+	text-align: center;
 }
 .btnText {
-   font-size: 0.9rem;
-   line-height: 125%;
+	font-size: 0.9rem;
+	line-height: 125%;
 }
 @media (max-width: 767px) {
-   .btn {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      border-radius: 50%;
-      width: 50px;
-   }
-   .btn .btnText {
-      display: none;
-   }
+	.btn {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		border-radius: 50%;
+		width: 50px;
+	}
+	.btn .btnText {
+		display: none;
+	}
 }

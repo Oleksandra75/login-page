@@ -10,7 +10,7 @@ const TodoList = () => {
    return (
       <section className={classes['posts__container']}>
          <h2 className={classes['header']} >My posts </h2>
-         <div className={classes['view-mode-toggle']}>
+         <div className={classes['view_mode_toggle']}>
             <button onClick={toggleViewMode}>
                {viewMode === 'list' ? <FaTable size={20} /> : <FaList size={20} />}
             </button>
