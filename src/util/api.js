@@ -1,4 +1,6 @@
-export async function fetchPosts(baseURL) {
+const baseURL = process.env.REACT_APP_API_URL
+
+export async function fetchPosts() {
 	try {
 		const response = await fetch(`${baseURL}/posts`)
 		return response.json()
@@ -7,7 +9,7 @@ export async function fetchPosts(baseURL) {
 	}
 }
 
-export const getData = async (currentPage, pageSize, baseURL) => {
+export const getData = async (currentPage, pageSize) => {
 	try {
 		const response = await fetch(
 			`${baseURL}/posts?_page=${currentPage}&_limit=${pageSize}`
@@ -20,7 +22,7 @@ export const getData = async (currentPage, pageSize, baseURL) => {
 	}
 }
 
-export async function getPost(id, baseURL) {
+export async function getPost(id) {
 	try {
 		const response = await fetch(`${baseURL}/posts/${id}`)
 		return response.json()
