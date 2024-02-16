@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchPopularMoviesAsync, selectMovieList } from '../../movieSlice'; 
+import { fetchPopularMoviesAsync, selectMovieList } from '../../features/movieSlice'; 
 
 import style from './movieList.module.css';
 import Card from '../../components/Card/Card';

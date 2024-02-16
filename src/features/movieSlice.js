@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { fetchPopularMovies } from './util/api'
+import { fetchPopularMovies } from '../util/api'
 
 export const fetchPopularMoviesAsync = createAsyncThunk(
 	'movies/fetchPopularMovies',
@@ -18,7 +18,6 @@ const initialState = {
 const movieSlice = createSlice({
 	name: 'movies',
 	initialState,
-	reducers: {},
 	extraReducers: builder => {
 		builder
 			.addCase(fetchPopularMoviesAsync.pending, state => {
