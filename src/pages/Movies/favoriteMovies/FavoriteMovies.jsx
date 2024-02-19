@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import { fetchMovieDetails } from '../../../util/api'
 import Card from '../../../components/Card/Card'
 import style from './favorite.module.css'
 
 const FavoriteMovies = () => {
+  const favoriteMovieIds = useSelector(
+    state => state.favoriteMovies.favoriteMovieIds
+  )
   const [favoriteMovies, setFavoriteMovies] = useState([])
 
   useEffect(() => {
     const fetchFavoriteMovies = async () => {
-      const favorites = JSON.parse(localStorage.getItem('favoriteMovies')) || []
-
-      const moviePromises = favorites.map(async movieId => {
+      const moviePromises = favoriteMovieIds.map(async movieId => {
         const data = await fetchMovieDetails(movieId)
         return data
       })
@@ -23,7 +25,7 @@ const FavoriteMovies = () => {
     }
 
     fetchFavoriteMovies()
-  }, [])
+  }, [favoriteMovieIds])
 
   return (
     <div className={style['movie_list']}>

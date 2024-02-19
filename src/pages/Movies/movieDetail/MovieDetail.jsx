@@ -1,41 +1,40 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
-import { setMovieDetails } from '../../../features/movieDetailsSlice'
-import {addToFavorites,removeFromFavorites,} from '../../../features/favoriteMoviesSlice'
-import { fetchMovieDetails } from '../../../util/api'
-import style from './movie.module.css'
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { setMovieDetails } from '../../../features/movieDetailsSlice';
+import { addToFavorites, removeFromFavorites } from '../../../features/favoriteMoviesSlice';
+import { fetchMovieDetails } from '../../../util/api';
+import style from './movie.module.css';
 
 const MovieDetail = () => {
-  const dispatch = useDispatch()
-  const movieDetails = useSelector(state => state.movieDetails)
-  const favoriteMovies = useSelector(state => state.favoriteMovies.favoriteMovies) 
-  const { id } = useParams()
-  const [isLoading, setLoading] = useState(true)
-  const isFavorite = favoriteMovies.includes(id)
+  const dispatch = useDispatch();
+  const movieDetails = useSelector(state => state.movieDetails);
+  const favoriteMovieIds = useSelector(state => state.favoriteMovies.favoriteMovieIds);
+  const { id } = useParams();
+  const [isLoading, setLoading] = useState(true);
+  const isFavorite = favoriteMovieIds.includes(id);
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetchMovieDetails(id)
-      dispatch(setMovieDetails(data))
-      setLoading(false)
-    }
+      const data = await fetchMovieDetails(id);
+      dispatch(setMovieDetails(data));
+      setLoading(false);
+    };
 
-    fetchData()
-  }, [dispatch, id])
+    fetchData();
+  }, [dispatch, id]);
 
   const handleToggleFavorite = () => {
     if (isFavorite) {
-      dispatch(removeFromFavorites(id)) 
+      dispatch(removeFromFavorites(id));
     } else {
-      dispatch(addToFavorites(id)) 
+      dispatch(addToFavorites(id));
     }
-  }
+  };
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
-
   return (
     <div className={style['movie']}>
       <div className={style['movie_intro']}>
@@ -81,7 +80,6 @@ const MovieDetail = () => {
                     <span
                       key={genre.id}
                       className={style['movie_genre']}
-                      id={genre.id}
                     >
                       {genre.name}
                     </span>
@@ -106,3 +104,4 @@ const MovieDetail = () => {
 }
 
 export default MovieDetail
+

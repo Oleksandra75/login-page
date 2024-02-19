@@ -1,34 +1,27 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  favoriteMovies: JSON.parse(localStorage.getItem('favoriteMovies')) || [],
-}
+  favoriteMovieIds: JSON.parse(localStorage.getItem('favoriteMovieIds')) || [],
+};
 
 const favoriteMoviesSlice = createSlice({
   name: 'favoriteMovies',
   initialState,
   reducers: {
-    setFavoriteMovies: (state, action) => {
-      state.favoriteMovies = action.payload
-    },
     addToFavorites: (state, action) => {
-      state.favoriteMovies.push(action.payload)
-      localStorage.setItem(
-        'favoriteMovies',
-        JSON.stringify(state.favoriteMovies)
-      )
+      const movieId = action.payload;
+      if (!state.favoriteMovieIds.includes(movieId)) {
+        state.favoriteMovieIds.push(movieId);
+        localStorage.setItem('favoriteMovieIds', JSON.stringify(state.favoriteMovieIds));
+      }
     },
     removeFromFavorites: (state, action) => {
-      state.favoriteMovies = state.favoriteMovies.filter(
-        movieId => movieId !== action.payload
-      )
-      localStorage.setItem(
-        'favoriteMovies',
-        JSON.stringify(state.favoriteMovies)
-      )
+      const movieId = action.payload;
+      state.favoriteMovieIds = state.favoriteMovieIds.filter(id => id !== movieId);
+      localStorage.setItem('favoriteMovieIds', JSON.stringify(state.favoriteMovieIds));
     },
   },
-})
+});
 
-export const { setFavoriteMovies, addToFavorites, removeFromFavorites } = favoriteMoviesSlice.actions
-export default favoriteMoviesSlice.reducer
+export const { addToFavorites, removeFromFavorites } = favoriteMoviesSlice.actions;
+export default favoriteMoviesSlice.reducer;
