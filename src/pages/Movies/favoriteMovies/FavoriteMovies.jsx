@@ -8,20 +8,18 @@ const FavoriteMovies = () => {
 
   useEffect(() => {
     const fetchFavoriteMovies = async () => {
-      const favorites = JSON.parse(localStorage.getItem('favorites')) || []
+      const favorites = JSON.parse(localStorage.getItem('favoriteMovies')) || []
 
-      if (favorites.length > 0) {
-        const moviePromises = favorites.map(async movieId => {
-          const data = await fetchMovieDetails(movieId)
-          return data
-        })
+      const moviePromises = favorites.map(async movieId => {
+        const data = await fetchMovieDetails(movieId)
+        return data
+      })
 
-        const favoriteMoviesData = await Promise.all(moviePromises)
-        const filteredMovies = favoriteMoviesData.filter(
-          movie => movie !== null
-        )
-        setFavoriteMovies(filteredMovies)
-      }
+      const favoriteMoviesData = await Promise.all(moviePromises)
+      const filteredMovies = favoriteMoviesData.filter(
+        movie => movie && movie.id
+      )
+      setFavoriteMovies(filteredMovies)
     }
 
     fetchFavoriteMovies()

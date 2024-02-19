@@ -2,16 +2,17 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { setMovieDetails } from '../../../features/movieDetailsSlice'
+import {addToFavorites,removeFromFavorites,} from '../../../features/favoriteMoviesSlice'
 import { fetchMovieDetails } from '../../../util/api'
 import style from './movie.module.css'
 
 const MovieDetail = () => {
   const dispatch = useDispatch()
   const movieDetails = useSelector(state => state.movieDetails)
+  const favoriteMovies = useSelector(state => state.favoriteMovies.favoriteMovies) 
   const { id } = useParams()
   const [isLoading, setLoading] = useState(true)
-  const [isFavorite, setFavorite] = useState(false)
-  const [favorites, setFavorites] = useState([])
+  const isFavorite = favoriteMovies.includes(id)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,28 +24,18 @@ const MovieDetail = () => {
     fetchData()
   }, [dispatch, id])
 
-  useEffect(() => {
-    const favoritesFromStorage =
-      JSON.parse(localStorage.getItem('favorites')) || []
-    setFavorites(favoritesFromStorage)
-    setFavorite(favoritesFromStorage.includes(id))
-  }, [id])
-
-  const toggleFavorite = () => {
-    const updatedFavorites = new Set([...favorites])
+  const handleToggleFavorite = () => {
     if (isFavorite) {
-      updatedFavorites.delete(id)
+      dispatch(removeFromFavorites(id)) 
     } else {
-      updatedFavorites.add(id)
+      dispatch(addToFavorites(id)) 
     }
-    localStorage.setItem('favorites', JSON.stringify([...updatedFavorites]))
-    setFavorites([...updatedFavorites])
-    setFavorite(!isFavorite)
   }
 
   if (isLoading) {
     return <div>Loading...</div>
   }
+
   return (
     <div className={style['movie']}>
       <div className={style['movie_intro']}>
@@ -103,7 +94,7 @@ const MovieDetail = () => {
             <div className={style['text']}>{movieDetails?.overview}</div>
             <button
               className={style['favorite_button']}
-              onClick={toggleFavorite}
+              onClick={handleToggleFavorite}
             >
               {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
             </button>
