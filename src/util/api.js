@@ -28,27 +28,39 @@ export async function getPost(id, baseURL) {
 		throw new Error(`Failed to fetch post. ${error.message}`)
 	}
 }
-const apiKey = process.env.REACT_APP_API_KEY_MOVIE
+const tokenMovie = process.env.REACT_APP_TOKEN_MOVIE
+
+const options = {
+  method: 'GET',
+     headers: {
+       accept: 'application/json',
+       Authorization:
+         `Bearer ${tokenMovie}`,
+  },
+}
 
 export const fetchPopularMovies = async () => {
-	try {
-		const response = await fetch(
-			`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`
-		)
-		const data = await response.json()
-		return data.results
-	} catch (error) {
-		throw new Error(`Error fetching popular movies: ${error.message}`)
-	}
-}
+    try {
+        const response = await fetch(
+            'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1',
+            options
+        );
+        const data = await response.json();
+        console.log(data); 
+        return data.results;
+    } catch (error) {
+        throw new Error(`Error fetching popular movies: ${error.message}`);
+    }
+};
 
-export const fetchMovieDetails = async movieId => {
-	try {
-		const response = await fetch(
-			`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`
-		)
-		return response.json()
-	} catch (error) {
-		throw new Error(`Error fetching popular movies: ${error.message}`)
-	}
-}
+export const fetchMovieDetails = async (movieId) => {
+    try {
+        const response = await fetch(
+            `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`,
+            options
+        );
+        return response.json();
+    } catch (error) {
+        throw new Error(`Error fetching movie details: ${error.message}`);
+    }
+};
