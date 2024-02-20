@@ -5,7 +5,7 @@ import classes from './postDetails.module.css'
 import { getPost } from '../../../util/api'
 
 const PostDetails = () => {
-	const [post, setPost] = useState()
+	const [post, setPost] = useState([])
 	const { id } = useParams()
 
 	useEffect(() => {
