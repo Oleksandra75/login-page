@@ -1,0 +1,26 @@
+{
+  "navbar": {
+    "movies": "Movies",
+    "favoriteMovies": "Favorite Movies",
+    "search": "Search"
+  },
+  "home":{
+    "title":"You are now logged in!",
+    "button":"Go to Posts"
+  },
+  "movie":{
+    "title":"Popular movie"
+  },
+  "favorite":{
+    "title":"Favorite movie",
+    "message":"You haven't added any favorite movies yet."
+  },
+  "post":{
+    "title":"My posts",
+    "button":"Back to Posts",
+    "buttonP":"Previous",
+    "buttonN":"Next",
+    "text": "Page",
+    "separator": "of"
+  }
+}

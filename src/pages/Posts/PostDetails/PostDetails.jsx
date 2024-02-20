@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import '../../../i18n' 
+
 
 import classes from './postDetails.module.css'
 import { getPost } from '../../../util/api'
@@ -7,6 +10,8 @@ import { getPost } from '../../../util/api'
 const PostDetails = () => {
 	const [post, setPost] = useState()
 	const { id } = useParams()
+	const { t } = useTranslation()
+
 	const baseURL = process.env.REACT_APP_API_URL
 
 	useEffect(() => {
@@ -20,7 +25,7 @@ const PostDetails = () => {
 		}
 
 		loadPost()
-	}, [id, baseURL])
+	}, [id])
 
 	return (
 		<div className={classes['page_container']}>
@@ -29,7 +34,7 @@ const PostDetails = () => {
 					<h2 className={classes.title}>{post.title}</h2>
 					<p className={classes.text}>{post.body}</p>
 					<Link to='/posts' className='back_button'>
-						Back to Posts
+						{t('post.button')}
 					</Link>
 				</div>
 			)}
