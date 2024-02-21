@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { fetchMovieDetails } from '../../../util/api'
-import Card from '../../../components/Card/Card'
+import { fetchMovieDetails } from 'util/api'
+import Card from 'components/Card/Card'
 import style from './favorite.module.css'
 
 const FavoriteMovies = () => {

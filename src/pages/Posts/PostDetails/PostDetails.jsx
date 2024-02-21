@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 
 import classes from './postDetails.module.css'
-import { getPost } from '../../../util/api'
+import { getPost } from 'util/api'
 
 const PostDetails = () => {
 	const [post, setPost] = useState()

@@ -1,16 +1,16 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { PostProvider } from './source/PostContext'
+import { PostProvider } from 'source/PostContext'
 import { SignInButton, SignedIn, SignedOut } from '@clerk/clerk-react'
 
-import Home from './pages/Home/Home'
-import Posts from './pages/Posts/Posts'
-import PostDetails from './pages/Posts/PostDetails/PostDetails'
-import Movie from './pages/Movies/Movie'
-import MovieDetail from './pages/Movies/movieDetail/MovieDetail'
-import FavoriteMovies from './pages/Movies/favoriteMovies/FavoriteMovies'
-import Navbar from './components/Navbar/Navbar'
-import './index.css'
+import Home from 'pages/Home/Home'
+import Posts from 'pages/Posts/Posts'
+import PostDetails from 'pages/Posts/PostDetails/PostDetails'
+import Movie from 'pages/Movies/Movie'
+import MovieDetail from 'pages/Movies/movieDetail/MovieDetail'
+import FavoriteMovies from 'pages/Movies/favoriteMovies/FavoriteMovies'
+import Navbar from 'components/Navbar/Navbar'
+import 'index.css'
 
 function App() {
 	return (

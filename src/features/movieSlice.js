@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { fetchPopularMovies } from '../util/api'
+import { fetchPopularMovies } from 'util/api'
 
 export const fetchPopularMoviesAsync = createAsyncThunk(
 	'movies/fetchPopularMovies',

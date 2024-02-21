@@ -3,11 +3,11 @@ import { useSelector, useDispatch } from 'react-redux'
 import {
   fetchPopularMoviesAsync,
   selectMovieList,
-} from '../../features/movieSlice'
+} from 'features/movieSlice'
 import InfiniteScroll from 'react-infinite-scroll-component' 
 
 import style from './movieList.module.css'
-import Card from '../../components/Card/Card'
+import Card from 'components/Card/Card'
 
 const Movie = () => {
   const dispatch = useDispatch()
