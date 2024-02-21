@@ -3,8 +3,8 @@ import { fetchPopularMovies } from '../util/api'
 
 export const fetchPopularMoviesAsync = createAsyncThunk(
 	'movies/fetchPopularMovies',
-	async () => {
-		const response = await fetchPopularMovies()
+	async (filters) => {
+		const response = await fetchPopularMovies(filters)
 		return response
 	}
 )
@@ -25,7 +25,7 @@ const movieSlice = createSlice({
 			})
 			.addCase(fetchPopularMoviesAsync.fulfilled, (state, action) => {
 				state.status = 'succeeded'
-				state.movieList = action.payload
+				state.movieList = [...state.movieList, ...action.payload]
 			})
 			.addCase(fetchPopularMoviesAsync.rejected, (state, action) => {
 				state.status = 'failed'

@@ -1,6 +1,7 @@
 .movie_list {
-	padding: 7rem 1rem 3rem 1rem;
+	padding: 7rem 1rem 3rem 1rem; /* змінено з 7rem на 3rem */
 }
+
 .title {
 	font-size: 1.8rem;
 	font-weight: 700;
@@ -8,14 +9,11 @@
 	padding-bottom: 10px;
 }
 
-.list_title {
-	font-size: 1.75rem;
-	margin: 0.5rem;
-}
-
 .list_cards {
 	display: grid;
 	place-items: center;
+	margin: 1rem;
 	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 	gap: 1rem;
 }
+
