@@ -1,57 +1,66 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { fetchPopularMoviesAsync, selectMovieList } from 'features/movieSlice'
+import React, { useState, useEffect, useRef } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchPopularMoviesAsync, selectMovieList } from 'features/movieSlice';
+import style from './movieList.module.css';
+import Card from 'components/Card/Card';
 
-import style from './movieList.module.css'
-import Card from 'components/Card/Card'
-
-const Movie = () => {
-  const dispatch = useDispatch()
-  const movieList = useSelector(selectMovieList)
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState(null)
-  const [filters, setFilters] = useState({
-    page: 1,
-  })
+const MovieCopy = () => {
+  const dispatch = useDispatch();
+  const { list, error, status } = useSelector(selectMovieList);
+  const [loader, setLoader] = useState(false);
+  const [filters, setFilters] = useState({ page: 1 });
+  const containerRef = useRef(null);
 
   useEffect(() => {
-    setIsLoading(true)
-    setError(null)
-    dispatch(fetchPopularMoviesAsync(filters))
-  }, [dispatch, filters])
+    dispatch(fetchPopularMoviesAsync(filters));
+  }, [filters, dispatch]);
 
-  const fetchMoreMovies = () => {
-    setFilters(prevFilters => ({
-      ...prevFilters,
-      page: prevFilters.page + 1,
-    }))
-  }
-
-  const handleScroll = () => {
-    if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight || isLoading) 
-    {
-      return
+  useEffect(() => {
+    if (loader === true) {
+      setFilters((prevFilters) => ({
+        ...prevFilters,
+        page: prevFilters.page + 1,
+      }));
     }
-    fetchMoreMovies()
-  }
+  }, [loader]);
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [isLoading])
+    if (status !== 'loading') {
+      setLoader(false);
+    }
+  }, [status]);
 
-  return (
-    <div className={style['movie_list']}>
-      <h2 className={style['title']}>Movies Copy</h2>
-      <div className={style['list_cards']}>
-        {movieList.map(movie => (
-          <Card key={movie.id} movie={movie} />
-        ))}
-        {isLoading && <p>Loading...</p>}
-        {error && <p>Error: {error.message}</p>}
-      </div>
-    </div>
-  )
+const handleScroll = () => {
+  const container = containerRef.current
+  if (
+     status !== 'loading' && container.scrollTop + container.clientHeight >=
+      container.scrollHeight - 50
+  ) {
+    setLoader(true)
+  }
 }
 
-export default Movie
+useEffect(() => {
+  const container = containerRef.current
+
+  container.addEventListener('scroll', handleScroll)
+    return () => {
+   container.removeEventListener('scroll', handleScroll)
+  }
+}, [status])
+
+return (
+  <div className={style['movie_list']} ref={containerRef}>
+    <h2 className={style['title']}>Movies Copy</h2>
+    <div className={style.list_cards}>
+      {list.map((movie, i) => (
+        <Card key={i} movie={movie} />
+      ))}
+      {status === 'loading' && <p>Loading...</p>}
+      {status === 'failed' && <p>Error: {error.message}</p>}
+    </div>
+  </div>
+)
+};
+
+export default MovieCopy;

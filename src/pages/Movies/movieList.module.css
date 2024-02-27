@@ -1,5 +1,8 @@
 .movie_list {
-	padding: 7rem 1rem 3rem 1rem; /* змінено з 7rem на 3rem */
+    padding: 7rem 1rem 7rem 1rem;
+    overflow-y: scroll;
+    height: 100vh;
+    scrollbar-width:none;
 }
 
 .title {
