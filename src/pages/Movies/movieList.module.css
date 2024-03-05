@@ -1,22 +1,23 @@
-.movie_list {
-    padding: 7rem 1rem 7rem 1rem;
-    overflow-y: scroll;
-    height: 100vh;
-    scrollbar-width:none;
+.movie_list{
+  padding: 4rem 1rem 1rem 1rem;
 }
-
+.movie_wrapper{
+  overflow-y: auto;
+  height: 80vh;
+  scrollbar-width: none;
+}
 .title {
-	font-size: 1.8rem;
-	font-weight: 700;
-	text-align: center;
-	padding-bottom: 10px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-align: center;
+  padding-bottom: 0.5rem;
 }
 
 .list_cards {
-	display: grid;
-	place-items: center;
-	margin: 1rem;
-	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-	gap: 1rem;
+  display: grid;
+  place-items: center;
+  margin: 0.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
 }
 

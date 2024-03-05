@@ -26,7 +26,7 @@ function App() {
           <div className='app__wrapper'>
             <Routes>
               {/*<Route path='/' element={<Registration />} />*/}
-              <Route path='/home' element={<Home />} />
+              <Route path='/' element={<Home />} />
               <Route path='/posts' element={<Posts />} />
               <Route path='/posts/:id' element={<PostDetails />} />
               {/* <Route path='/movies' element={<Movie />} />*/}
