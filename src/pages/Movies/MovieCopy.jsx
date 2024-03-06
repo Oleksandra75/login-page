@@ -1,66 +1,91 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchPopularMoviesAsync, selectMovieList } from 'features/movieSlice';
-import style from './movieList.module.css';
-import Card from 'components/Card/Card';
+import React, { useState, useEffect, useRef } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import {fetchPopularMoviesAsync,selectMovieList,setAddFilmsAtStart,} from 'features/movieSlice'
+import { useBoolean, useDebounceCallback } from 'usehooks-ts'
+import Card from 'components/Card/Card'
+import style from './movieList.module.css'
 
 const MovieCopy = () => {
-  const dispatch = useDispatch();
-  const { list, error, status } = useSelector(selectMovieList);
-  const [loader, setLoader] = useState(false);
-  const [filters, setFilters] = useState({ page: 1 });
-  const containerRef = useRef(null);
+  const dispatch = useDispatch()
+  const { list, error, status } = useSelector(selectMovieList)
+  const [filters, setFilters] = useState({ page: 50 })
+  const [firstLoadedPage, setFirstLoadedPage] = useState(50)
+  const [lastLoadedPage, setLastLoadedPage] = useState(50)
+  const movieWrapperRef = useRef(null)
+  const loader = useBoolean(false)
 
   useEffect(() => {
-    dispatch(fetchPopularMoviesAsync(filters));
-  }, [filters, dispatch]);
-
-  useEffect(() => {
-    if (loader === true) {
-      setFilters((prevFilters) => ({
-        ...prevFilters,
-        page: prevFilters.page + 1,
-      }));
-    }
-  }, [loader]);
+    dispatch(fetchPopularMoviesAsync(filters))
+  }, [dispatch, filters])
 
   useEffect(() => {
     if (status !== 'loading') {
-      setLoader(false);
+      loader.setFalse()
     }
-  }, [status]);
+  }, [status, loader])
 
-const handleScroll = () => {
-  const container = containerRef.current
-  if (
-     status !== 'loading' && container.scrollTop + container.clientHeight >=
-      container.scrollHeight - 50
-  ) {
-    setLoader(true)
+const handleScrollToBottom = () => {
+  loader.setTrue()
+  dispatch(setAddFilmsAtStart(false))
+
+  if (filters.page !== lastLoadedPage + 1) {
+    setFilters(prevFilters => ({
+      ...prevFilters,
+      page: lastLoadedPage + 1,
+    }))
   }
 }
 
-useEffect(() => {
-  const container = containerRef.current
+const handleScrollToTop = () => {
+  loader.setTrue()
+  dispatch(setAddFilmsAtStart(true))
 
-  container.addEventListener('scroll', handleScroll)
-    return () => {
-   container.removeEventListener('scroll', handleScroll)
+  if (filters.page !== firstLoadedPage - 1) {
+    setFilters(prevFilters => ({
+      ...prevFilters,
+      page: firstLoadedPage - 1,
+    }))
   }
-}, [status])
+}
 
-return (
-  <div className={style['movie_list']} ref={containerRef}>
-    <h2 className={style['title']}>Movies Copy</h2>
-    <div className={style.list_cards}>
-      {list.map((movie, i) => (
-        <Card key={i} movie={movie} />
-      ))}
-      {status === 'loading' && <p>Loading...</p>}
-      {status === 'failed' && <p>Error: {error.message}</p>}
+  const handleScroll = useDebounceCallback(event => {
+    const { target } = event
+    if (target.scrollTop + target.clientHeight >= target.scrollHeight - 50) {
+      handleScrollToBottom()
+    } else if (target.scrollTop === 0 && firstLoadedPage > 1) {
+      handleScrollToTop()
+    }
+  }, 300)
+
+  useEffect(() => {
+    if (status === 'succeeded') {
+      if (filters.page < firstLoadedPage) {
+        const addedContentHeight = 1550
+        movieWrapperRef.current.scrollTop = addedContentHeight
+        setFirstLoadedPage(filters.page)
+      } else if (filters.page > lastLoadedPage) {
+        setLastLoadedPage(filters.page)
+      }
+    }
+  }, [filters])
+
+  return (
+    <div className={style['movie_list']}>
+      <h2 className={style['title']}>Movies Copy</h2>
+      <div
+        className={style['movie_wrapper']}
+        ref={movieWrapperRef}
+        onScroll={handleScroll}
+      >
+        <div className={style.list_cards}>
+          {status === 'failed' && <p>Error: {error.message}</p>}
+          {list.map((movie, i) => (
+            <Card key={i} movie={movie} />
+          ))}
+        </div>
+      </div>
     </div>
-  </div>
-)
-};
+  )
+}
 
-export default MovieCopy;
+export default MovieCopy

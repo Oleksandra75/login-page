@@ -25,8 +25,8 @@ const Navbar = () => {
     <header className={styles['header']}>
       <div className={styles['header__container']}>
         <div className={styles['header__content']}>
-          <Link to='/home' className={styles['header__logo']}>
-            My<span>Posts</span>
+          <Link to='/' className={styles['header__logo']}>
+            PS&MV
           </Link>
           <div
             className={
@@ -117,7 +117,10 @@ const Navbar = () => {
           >
             <FaBars size={30} />
           </button>
-          <SignOutButton afterSignOutUrl='/' />
+          <SignOutButton
+            className={styles['btn_out']}
+            afterSignOutUrl='/'
+          />
         </div>
       </div>
     </header>
