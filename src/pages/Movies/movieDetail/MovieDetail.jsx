@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { setMovieDetails } from '../../../features/movieDetailsSlice';
-import { addToFavorites, removeFromFavorites } from '../../../features/favoriteMoviesSlice';
-import { fetchMovieDetails } from '../../../util/api';
+import { setMovieDetails } from 'features/movieDetailsSlice';
+import { addToFavorites, removeFromFavorites } from 'features/favoriteMoviesSlice';
+import { fetchMovieDetails } from 'util/api';
 import style from './movie.module.css';
 
 const MovieDetail = () => {

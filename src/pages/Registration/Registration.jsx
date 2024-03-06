@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import RegistrationLogic from './RegistrationLogic'
+import RegistrationLogic from 'RegistrationLogic'
 import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google'
 import classes from './registration.module.css'
 

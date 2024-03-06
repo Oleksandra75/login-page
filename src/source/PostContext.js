@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react'
-import { getData } from '../util/api'
+import { getData } from 'util/api'
 const PostContext = createContext()
 
 export const PostProvider = ({ children }) => {

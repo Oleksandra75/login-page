@@ -1,4 +1,4 @@
-import { usePostContext } from '../../source/PostContext'
+import { usePostContext } from 'source/PostContext'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import TodoList from '../TodoList/TodoList'
 import classes from './post.module.css'

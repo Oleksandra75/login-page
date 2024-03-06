@@ -85,3 +85,8 @@ h6 {
 	background-color: transparent;
 	color: #000;
 }
+
+.app__wrapper{
+	flex: 1 1 auto;
+	padding: 1rem 0;
+}

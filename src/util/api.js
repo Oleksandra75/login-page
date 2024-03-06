@@ -41,15 +41,16 @@ const options = {
   },
 }
 
-export const fetchPopularMovies = async () => {
+export const fetchPopularMovies = async (filters) => {
     try {
-        const response = await fetch(
-            'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1',
-            options
-        );
-        const data = await response.json();
-        console.log(data); 
-        return data.results;
+      const response = await fetch(
+        'https://api.themoviedb.org/3/movie/popular?' +
+          new URLSearchParams(filters),
+        options
+      )
+      const data = await response.json()
+      console.log(filters)
+      return data.results
     } catch (error) {
         throw new Error(`Error fetching popular movies: ${error.message}`);
     }

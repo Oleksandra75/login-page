@@ -1,6 +1,6 @@
 import classes from './todoList.module.css';
 import { FaList, FaTable } from 'react-icons/fa';
-import { usePostContext } from '../../source/PostContext'
+import { usePostContext } from 'source/PostContext'
 import TableView from './TableView/TableView';
 import ListView from './ListView/ListView';
 
