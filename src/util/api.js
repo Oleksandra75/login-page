@@ -49,13 +49,13 @@ export const fetchPopularMovies = async (filters) => {
         options
       )
       const data = await response.json()
-      console.log(filters)
       return data.results
     } catch (error) {
         throw new Error(`Error fetching popular movies: ${error.message}`);
     }
 };
 
+// Used for movieDetailsSlice
 export const fetchMovieDetails = async (movieId) => {
     try {
         const response = await fetch(

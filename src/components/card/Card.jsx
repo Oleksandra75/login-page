@@ -11,7 +11,6 @@ const Card = ({ movie }) => {
 
   const handleImageLoaded = () => {
     setLoading(false)
-    console.log('cax')
   }
 
   return (
