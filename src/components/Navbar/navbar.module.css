@@ -4,26 +4,27 @@
 	right: 0;
 	left: 0;
 	width: 100%;
-	min-height: 5.5625rem;
+	height: 64px;
 	box-sizing: border-box;
 	z-index: 100;
-	background: linear-gradient(
-		rgb(2, 12, 27, 0.938),
-		rgba(171, 203, 245, 0.327)
-	);
+	background-color: #020c1b;
+}
+.header__container{
+	padding-top: 0.4rem;
 }
 .header__content {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: 1rem;
 }
-.header__logo {
-	font-size: 1.5rem;
-}
-.header__logo span {
-	color: #fff;
-	font-size: 2rem;
+.header__logo{
+	background-image: linear-gradient(to right, #fed8d8, #da2f68);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+	font-size: 1.8rem;
+	font-weight: 900;
+	text-transform: uppercase;
 }
 .search {
 	display: flex;
@@ -49,7 +50,7 @@
 	position: absolute;
 	height: 100%;
 	width: 100%;
-	background: #fff;
+	background: #04152d;
 	outline: none;
 	border: none;
 	border-radius: 25px;
@@ -58,7 +59,7 @@
 }
 
 .input:focus {
-	color:  #04152d;
+	color: #da2f68;
 }
 
 .icon {
@@ -70,7 +71,8 @@
 	right: 0;
 	top: 0;
 	width: 50px;
-	background: #fff;
+	background:#04152d;
+	color: #fff;
 	height: 100%;
 	line-height: 50px;
 	font-size: 20px;
@@ -81,6 +83,20 @@
 	position: absolute;
 	width: 20px;
 	height: 20px;
+}
+.btn_out{
+	display: block;
+	width: 170px;
+	padding: 0.4rem 0.4rem;
+	border-radius: 25px;
+	text-decoration: none;
+	outline: 0;
+	font-size: 0.9rem;
+	font-family: inherit;
+	cursor: pointer;
+	color: #020c1b;
+	background-image: linear-gradient(to right, #f4b6b6, #da2f68);
+	transition: 0.3s;
 }
 
 .results-list {
@@ -136,12 +152,12 @@
 }
 .nav-link {
 	position: relative;
-	font-size: 1.5rem;
+	font-size: 1rem;
 	color: #fff;
+	transition: all 0.5s ease-in-out;
 }
 .nav-link:hover {
-	color: #04152d;
-	transition: all 300ms ease-in-out;
+	color: #da2f68;
 }
 
 @media screen and (width >= 499.99px) {
@@ -151,13 +167,6 @@
 }
 
 @media screen and (min-width: 961.99px) {
-	.header__logo {
-		font-size: 2rem;
-	}
-	.header__logo span {
-		color: #fff;
-		font-size: 3rem;
-	}
 	.search {
 		max-width: 280px;
 		width: 100%;
@@ -182,10 +191,6 @@
 		padding: 0;
 		margin: 0;
 	}
-
-	.input {
-		font-size: 1.2rem;
-	}
 	.navbar-close-btn,
 	.navbar-open-btn {
 		display: none;
@@ -201,9 +206,5 @@
 	.nav-item {
 		margin: 0;
 		margin-left: 3.2rem;
-	}
-
-	.nav-link {
-		font-size: 1.8rem;
 	}
 }

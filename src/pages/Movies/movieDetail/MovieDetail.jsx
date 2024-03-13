@@ -1,28 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { setMovieDetails } from 'features/movieDetailsSlice';
+import React from 'react'
+import { useParams } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { useMovieDetailsQuery } from 'features/apiSlice'
 import { addToFavorites, removeFromFavorites } from 'features/favoriteMoviesSlice';
-import { fetchMovieDetails } from 'util/api';
 import style from './movie.module.css';
 
 const MovieDetail = () => {
-  const dispatch = useDispatch();
-  const movieDetails = useSelector(state => state.movieDetails);
-  const favoriteMovieIds = useSelector(state => state.favoriteMovies.favoriteMovieIds);
+  const dispatch = useDispatch()
   const { id } = useParams();
-  const [isLoading, setLoading] = useState(true);
+  const { data: movieDetails, isLoading, isError } = useMovieDetailsQuery(id);
+
+  const favoriteMovieIds = useSelector(state => state.favoriteMovies.favoriteMovieIds);
   const isFavorite = favoriteMovieIds.includes(id);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await fetchMovieDetails(id);
-      dispatch(setMovieDetails(data));
-      setLoading(false);
-    };
-
-    fetchData();
-  }, [dispatch, id]);
+  if (isError) {
+    return <div>Error loading movie details</div>;
+  }
 
   const handleToggleFavorite = () => {
     if (isFavorite) {
